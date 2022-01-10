@@ -2,3 +2,9 @@ name: FirstPlugin
 version: 1.0.0
 api-version: 1.17
 main: me.ipincamp.FirstPlugin
+
+commands:
+  heal:
+    description: Heals your player
+    aliases: h
+    usage: /heal
