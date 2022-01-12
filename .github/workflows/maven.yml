@@ -16,4 +16,4 @@ jobs:
         distribution: 'microsoft'
         cache: maven
     - name: Build main project
-      run: mvn package --file client/pom.xml
+      run: mvn package --file pom.xml
