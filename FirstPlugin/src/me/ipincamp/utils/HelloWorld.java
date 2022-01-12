@@ -1,4 +1,4 @@
-package me.ipincamp;
+package me.ipincamp.utils;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

@@ -1,5 +1,6 @@
-package me.ipincamp;
+package me.ipincamp.utils;
 
+import me.ipincamp.FirstPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

@@ -1,4 +1,4 @@
-package me.ipincamp;
+package me.ipincamp.utils;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;

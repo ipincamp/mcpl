@@ -1,7 +1,7 @@
 package me.ipincamp.commands;
 
-import me.ipincamp.CommandBase;
-import me.ipincamp.Msg;
+import me.ipincamp.utils.CommandBase;
+import me.ipincamp.utils.Msg;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
