@@ -2,7 +2,8 @@ name: FirstPlugin
 version: 1.0.0
 api-version: 1.17
 main: me.ipincamp.FirstPlugin
-
+description: This Is My First Plugin, Create By ipincamp, Recoded By andhra21231.
+author: [ipincamp, andhra21231]
 commands:
   heal:
     description: Heals your player
