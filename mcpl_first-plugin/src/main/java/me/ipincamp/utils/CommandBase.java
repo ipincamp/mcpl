@@ -14,7 +14,6 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings({"unused", "NullableProblems", "UnusedReturnValue", "CodeBlock2Expr", "RedundantExplicitVariableType", "ConstantConditions", "PatternVariableCanBeUsed"})
 public abstract class CommandBase extends BukkitCommand implements CommandExecutor {
     private List<String> delayedPlayers = null;
     private int delay = 0;
@@ -25,7 +24,6 @@ public abstract class CommandBase extends BukkitCommand implements CommandExecut
     public CommandBase(String command) {
         this(command, 0);
     }
-
     public CommandBase(String command, boolean playerOnly) {
         this(command, 0, playerOnly);
     }
@@ -81,7 +79,7 @@ public abstract class CommandBase extends BukkitCommand implements CommandExecut
     }
 
     public void sendUsage(CommandSender sender) {
-        Msg.send(sender, getUsage());
+        Message.send(sender, getUsage());
     }
 
     public boolean execute(CommandSender sender, String alias, String [] arguments) {
@@ -91,20 +89,20 @@ public abstract class CommandBase extends BukkitCommand implements CommandExecut
         }
 
         if (playerOnly && !(sender instanceof Player)) {
-            Msg.send(sender, "&cOnly player can use this command.");
+            Message.send(sender, "&cOnly player can use this command.");
             return true;
         }
 
         String permission = getPermission();
         if (permission != null && !sender.hasPermission(permission)) {
-            Msg.send(sender, "&cYou do not have permission to use this command.");
+            Message.send(sender, "&cYou do not have permission to use this command.");
             return true;
         }
 
         if (delayedPlayers != null && sender instanceof Player) {
             Player player = (Player) sender;
             if (delayedPlayers.contains(player.getName())) {
-                Msg.send(player, "&cPlease wait before using this command again.");
+                Message.send(player, "&cPlease wait before using this command again.");
                 return true;
             }
 

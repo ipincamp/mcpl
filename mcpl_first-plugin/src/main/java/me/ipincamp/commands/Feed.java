@@ -1,19 +1,20 @@
 package me.ipincamp.commands;
 
+import me.ipincamp.FirstPlugin;
 import me.ipincamp.utils.CommandBase;
-import me.ipincamp.utils.Msg;
+import me.ipincamp.utils.Message;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@SuppressWarnings("NullableProblems")
 public class Feed {
-    public Feed() {
-        new CommandBase("feed",true) {
+    public Feed(FirstPlugin plugin) {
+        new CommandBase("feed", true) {
             @Override
-            public boolean onCommand(CommandSender sender, String [] arguments) {
+            public boolean onCommand(CommandSender sender, String[] arguments) {
                 Player player = (Player) sender;
                 player.setFoodLevel(20);
-                Msg.send(player, "&aYou have been feed");
+
+                Message.send(player, "&aYou have been feed!");
                 return true;
             }
 
@@ -21,6 +22,6 @@ public class Feed {
             public String getUsage() {
                 return "/feed";
             }
-        }.enableDelay(2);
+        }.enableDelay(30).setPermission("mcpl.command.feed");
     }
 }

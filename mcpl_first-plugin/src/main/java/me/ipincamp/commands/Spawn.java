@@ -1,8 +1,8 @@
 package me.ipincamp.commands;
 
-import me.ipincamp.utils.CommandBase;
 import me.ipincamp.FirstPlugin;
-import me.ipincamp.utils.Msg;
+import me.ipincamp.utils.CommandBase;
+import me.ipincamp.utils.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -10,7 +10,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-@SuppressWarnings({"ConstantConditions", "NullableProblems"})
 public class Spawn {
     private Location spawn = null;
 
@@ -53,7 +52,7 @@ public class Spawn {
                 plugin.saveConfig();
                 spawn = location;
 
-                Msg.send(player, "New spawn point set!");
+                Message.send(player, "New spawn point set!");
                 return true;
             }
 
@@ -61,7 +60,7 @@ public class Spawn {
             public String getUsage() {
                 return "/setSpawn";
             }
-        }.enableDelay(2).setPermission("firstplugin.spawn.set");
+        }.enableDelay(2).setPermission("mcpl.command.spawn.set");
 
         new CommandBase("spawn", true) {
             @Override

@@ -1,8 +1,0 @@
-# Add Your Spawn Point At Here.
-spawn:
-  world: world
-  x: 0
-  y: 0
-  z: 0
-  yaw: 0.0
-  pitch: 0.0

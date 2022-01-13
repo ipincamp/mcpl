@@ -3,7 +3,7 @@ package me.ipincamp.utils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
-public class Msg {
+public class Message {
     public static void send(CommandSender sender, String message) {
         send(sender, message, "&a");
     }
