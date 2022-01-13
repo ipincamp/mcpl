@@ -1,13 +1,15 @@
 # MCPL - Minecraft Plugin
 
-Version Java : 1.17
+### About
+Author: [@ipincamp](https://github.com/ipincamp)
+Contributor: [@andhra21231](https://github.com/andhra21231)
 
-Version Minecraft : 1.8 - 1.18
+### Debuging
+JDK: 17.0.1
+Tested Server : 1.17.1
 
-Author : [@ipincamp](https://github.com/ipincamp)
-
-Contributor : [@andhra21231](https://github.com/andhra21231)
-
-List Command : 
-
-IDK
+### Commands
+- Feed
+- Heal
+- Spawn
+- Soon!
