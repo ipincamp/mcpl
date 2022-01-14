@@ -1,9 +1,9 @@
-package me.ipincamp.utils;
+package me.ipincamp.mcpl.utils;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
-public class Message {
+public class Msg {
     public static void send(CommandSender sender, String message) {
         send(sender, message, "&a");
     }

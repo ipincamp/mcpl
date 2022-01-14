@@ -1,6 +1,6 @@
-package me.ipincamp.utils;
+package me.ipincamp.mcpl.utils;
 
-import me.ipincamp.FirstPlugin;
+import me.ipincamp.mcpl.Mcpl;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -14,33 +14,34 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class CommandBase extends BukkitCommand implements CommandExecutor {
-    private List<String> delayedPlayers = null;
+public abstract class Cmd extends BukkitCommand implements CommandExecutor {
+    private List<String> cooldowns = null;
     private int delay = 0;
     private final int minArguments;
     private final int maxArguments;
     private final boolean playerOnly;
 
-    public CommandBase(String command) {
+    public Cmd(String command) {
         this(command, 0);
     }
-    public CommandBase(String command, boolean playerOnly) {
+
+    public Cmd(String command, boolean playerOnly) {
         this(command, 0, playerOnly);
     }
 
-    public CommandBase(String command, int requiredArguments) {
+    public Cmd(String command, int requiredArguments) {
         this(command, requiredArguments, requiredArguments);
     }
 
-    public CommandBase(String command, int minArguments, int maxArguments) {
+    public Cmd(String command, int minArguments, int maxArguments) {
         this(command, minArguments, maxArguments, false);
     }
 
-    public CommandBase(String command, int requiredArguments, boolean playerOnly) {
+    public Cmd(String command, int requiredArguments, boolean playerOnly) {
         this(command, requiredArguments, requiredArguments, playerOnly);
     }
 
-    public CommandBase(String command, int minArguments, int maxArguments, boolean playerOnly) {
+    public Cmd(String command, int minArguments, int maxArguments, boolean playerOnly) {
         super(command);
 
         this.minArguments = minArguments;
@@ -61,54 +62,59 @@ public abstract class CommandBase extends BukkitCommand implements CommandExecut
 
                 return (CommandMap) field.get(Bukkit.getPluginManager());
             }
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            e.printStackTrace();
+        } catch (NoSuchFieldException | IllegalAccessException exception) {
+            exception.printStackTrace();
         }
 
         return null;
     }
 
-    public CommandBase enableDelay(int delay) {
+    public Cmd cooldowns(int delay) {
         this.delay = delay;
-        this.delayedPlayers = new ArrayList<>();
+        this.cooldowns = new ArrayList<>();
+
         return this;
     }
 
-    public void removePlay(Player player) {
-        this.delayedPlayers.remove(player.getName());
+    public void removeCooldown(Player player) {
+        this.cooldowns.remove(player.getName());
     }
 
     public void sendUsage(CommandSender sender) {
-        Message.send(sender, getUsage());
+        Msg.send(sender, getUsage());
     }
 
-    public boolean execute(CommandSender sender, String alias, String [] arguments) {
-        if (arguments.length < minArguments || (arguments.length < maxArguments && maxArguments != -1)) {
+    public boolean execute(CommandSender sender, String aliases, String [] arguments) {
+        if (arguments.length < minArguments || (arguments.length > maxArguments && maxArguments != -1)) {
             sendUsage(sender);
+
             return true;
         }
 
         if (playerOnly && !(sender instanceof Player)) {
-            Message.send(sender, "&cOnly player can use this command.");
+            Msg.send(sender, "&cOnly players can use this command.");
+
             return true;
         }
 
         String permission = getPermission();
         if (permission != null && !sender.hasPermission(permission)) {
-            Message.send(sender, "&cYou do not have permission to use this command.");
+            Msg.send(sender, "&cYou do not have permission to use this command.");
+
             return true;
         }
 
-        if (delayedPlayers != null && sender instanceof Player) {
+        if (cooldowns != null && sender instanceof Player) {
             Player player = (Player) sender;
-            if (delayedPlayers.contains(player.getName())) {
-                Message.send(player, "&cPlease wait before using this command again.");
+            if (cooldowns.contains(player.getName())) {
+                Msg.send(player, "&cPlease wait before reusing this command again.");
+
                 return true;
             }
 
-            delayedPlayers.add(player.getName());
-            Bukkit.getScheduler().scheduleSyncDelayedTask(FirstPlugin.getInstance(), () -> {
-                delayedPlayers.remove(player.getName());
+            cooldowns.add(player.getName());
+            Bukkit.getScheduler().scheduleSyncDelayedTask(Mcpl.getInstance(), () -> {
+                cooldowns.remove(player.getName());
             }, 20L * delay);
         }
 
@@ -119,10 +125,11 @@ public abstract class CommandBase extends BukkitCommand implements CommandExecut
         return true;
     }
 
-    public boolean onCommand(CommandSender sender, Command command, String alias, String [] arguments) {
+    public boolean onCommand(CommandSender sender, Command command, String aliases, String [] arguments) {
         return this.onCommand(sender, arguments);
     }
 
     public abstract boolean onCommand(CommandSender sender, String [] arguments);
+
     public abstract String getUsage();
 }

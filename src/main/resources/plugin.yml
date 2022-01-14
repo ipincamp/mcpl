@@ -1,0 +1,6 @@
+name: Mcpl
+version: '${project.version}'
+main: me.ipincamp.mcpl.Mcpl
+api-version: 1.17
+authors: [ ipincamp ]
+description: Minecraft plugin to make your server more fun
