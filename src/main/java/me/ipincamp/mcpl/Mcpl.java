@@ -2,6 +2,7 @@ package me.ipincamp.mcpl;
 
 import me.ipincamp.mcpl.commands.Feed;
 import me.ipincamp.mcpl.commands.Heal;
+import me.ipincamp.mcpl.commands.Spawn;
 import me.ipincamp.mcpl.events.BlockPlace;
 import me.ipincamp.mcpl.events.Welcome;
 import org.bukkit.Bukkit;
@@ -16,13 +17,22 @@ public final class Mcpl extends JavaPlugin {
         // Plugin startup logic
         Bukkit.getLogger().info("[mcpl] Hello cruel world!");
 
-        // Events Listeners
-        Bukkit.getPluginManager().registerEvents(new Welcome(), this);
-        Bukkit.getPluginManager().registerEvents(new BlockPlace(), this);
+        // Enabling Configurations
+        saveDefaultConfig();
 
-        // Commands Listeners
+        /**
+         * Events Listeners
+         */
+
+         Bukkit.getPluginManager().registerEvents(new Welcome(), this);
+         Bukkit.getPluginManager().registerEvents(new BlockPlace(), this);
+
+        /**
+         * Commands Listeners
+         */
         new Feed();
         new Heal();
+        new Spawn(this);
 
     }
 
