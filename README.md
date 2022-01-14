@@ -10,7 +10,8 @@ IDEA          : IntelliJ IDEA 2021.3.1 (Community Edition)
 ### Commands & Features
 - Welcome message.
 - Interaction when place block.
-- Feed & Heal commands.
+- feed & heal
+- myspawn & setmyspawn
 
 ### Contributors
 Author: [@ipincamp](https://github.com/ipincamp) <br>
