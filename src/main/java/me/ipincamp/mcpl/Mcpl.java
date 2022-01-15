@@ -2,6 +2,7 @@ package me.ipincamp.mcpl;
 
 import me.ipincamp.mcpl.commands.Feed;
 import me.ipincamp.mcpl.commands.Heal;
+import me.ipincamp.mcpl.commands.Ping;
 import me.ipincamp.mcpl.commands.Spawn;
 import me.ipincamp.mcpl.events.BlockPlace;
 import me.ipincamp.mcpl.events.Welcome;
@@ -32,6 +33,7 @@ public final class Mcpl extends JavaPlugin {
          */
         new Feed();
         new Heal();
+        new Ping();
         new Spawn(this);
 
     }
