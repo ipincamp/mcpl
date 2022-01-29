@@ -4,47 +4,41 @@ import me.ipincamp.mcpl.commands.Feed;
 import me.ipincamp.mcpl.commands.Heal;
 import me.ipincamp.mcpl.commands.Ping;
 import me.ipincamp.mcpl.commands.Spawn;
-import me.ipincamp.mcpl.events.BlockPlace;
-import me.ipincamp.mcpl.events.Welcome;
+import me.ipincamp.mcpl.events.JoinLeave;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Mcpl extends JavaPlugin {
-    private static Mcpl instance;
+
+    private static Mcpl plugin;
 
     @Override
     public void onEnable() {
-        instance = this;
         // Plugin startup logic
-        Bukkit.getLogger().info("[mcpl] Hello cruel world!");
+        this.saveDefaultConfig();
 
-        // Enabling Configurations
-        saveDefaultConfig();
+        plugin = this;
 
-        /**
-         * Events Listeners
-         */
+        Bukkit.getServer().getPluginManager().registerEvents(new JoinLeave(), this);
 
-         Bukkit.getPluginManager().registerEvents(new Welcome(), this);
-         Bukkit.getPluginManager().registerEvents(new BlockPlace(), this);
-
-        /**
-         * Commands Listeners
-         */
-        new Feed();
         new Heal();
+        new Feed();
         new Ping();
         new Spawn(this);
 
+        Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[MCPL] Thank you for choosing this plugin!");
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        Bukkit.getLogger().info("[mcpl] Cya...!");
+        Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.RED + "[MCPL] Have a nice day...");
+
     }
 
-    public static Mcpl getInstance() {
-        return instance;
+    public static Plugin getPlugin() {
+        return plugin;
     }
 }
