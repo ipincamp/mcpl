@@ -1,8 +1,8 @@
 package me.ipincamp.mcpl.commands;
 
 import me.ipincamp.mcpl.Mcpl;
-import me.ipincamp.mcpl.utils.Cmd;
-import me.ipincamp.mcpl.utils.Msg;
+import me.ipincamp.mcpl.utils.CommandHandlers;
+import me.ipincamp.mcpl.utils.MessageFormats;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -10,6 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
+@SuppressWarnings("ConstantConditions")
 public class Spawn {
     private Location spawn = null;
 
@@ -37,7 +38,7 @@ public class Spawn {
 
         spawn = new Location(world, x, y, z, yaw, pitch);
 
-        new Cmd("setmyspawn", true) {
+        new CommandHandlers("setmyspawn", true) {
             @Override
             public boolean onCommand(CommandSender sender, String [] arguments) {
                 Player player = (Player) sender;
@@ -54,7 +55,7 @@ public class Spawn {
                 // Don't forget to save them
                 plugin.saveConfig();
                 spawn = location;
-                Msg.send(player, "Your spawn has been set");
+                MessageFormats.send(player, "Your spawn has been set");
 
                 return true;
             }
@@ -63,14 +64,14 @@ public class Spawn {
             public String getUsage() {
                 return "/setmyspawn";
             }
-        }.cooldowns(5).setPermission("mcpl.command.setmyspawn");
+        }.enableDelay(5).setPermission("mcpl.command.setmyspawn");
 
-        new Cmd("myspawn", true) {
+        new CommandHandlers("myspawn", true) {
             @Override
             public boolean onCommand(CommandSender sender, String [] arguments) {
                 Player player = (Player) sender;
                 player.teleport(spawn);
-                Msg.send(player, "&eTeleporting you...");
+                MessageFormats.send(player, "&eTeleporting you...");
 
                 return true;
             }
@@ -79,6 +80,6 @@ public class Spawn {
             public String getUsage() {
                 return "/myspawn";
             }
-        }.cooldowns(3).setPermission("mcpl.command.myspawn");
+        }.enableDelay(3).setPermission("mcpl.command.myspawn");
     }
 }
