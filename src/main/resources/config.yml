@@ -1,3 +1,49 @@
+# Don't touch this
+version: 1.0.1
+
+
+# Placeholders:
+#   [displayName] <- The display name of the user joining.
+
+# You can use the color codes and formats at the bottom of this file
+
+# If you leave firstJoinMessage empty, then it will send the message from joinMessage instead.
+# If joinMessage or quitMessage, the default join/leave message will be sent.
+
+firstJoinMessage: "&6[displayName]&5 joined for the first time!"
+joinMessage: "&6[displayName]&a joined the server!"
+quitMessage: "&6[displayName]&c left the server!"
+
+
+# COLOR CODES
+# -----------
+# Red          - &c
+# Gold         - &6
+# Aqua         - &b
+# Blue         - &9
+# Gray         - &7
+# Green        - &a
+# White        - &f
+# Black        - &0
+# Yellow       - &e
+# Dark Red     - &4
+# Dark Gray    - &8
+# Dark Aqua    - &3
+# Dark Blue    - &1
+# Dark Green   - &2
+# Dark Purple  - &5
+# Light Purple - &d
+
+
+# FORMAT CODES
+# ------------
+# Bold             - &l
+# Italic           - &o
+# Underline        - &n
+# Obfuscated       - &k
+# Strikethrough    - &m
+# Reset to default - &r
+
 spawn:
   world: world
   x: 0
