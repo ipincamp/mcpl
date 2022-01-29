@@ -1,6 +1,6 @@
 package me.ipincamp.mcpl.events;
 
-import me.ipincamp.mcpl.utils.Msg;
+import me.ipincamp.mcpl.utils.MessageFormats;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,7 +14,7 @@ public class BlockPlace implements Listener {
 
         if (type == Material.TORCH) {
             Player player = event.getPlayer();
-            Msg.send(player, "&eBe careful!");
+            MessageFormats.send(player, "&eBe careful!");
         }
     }
 }
