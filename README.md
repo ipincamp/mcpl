@@ -1,16 +1,16 @@
 # MCPL - Minecraft Plugin
 
 ### About
-```java
-JDK version   : 17.0.1
-Server Tested : blcknet.minehut.gg (1.17.1)
-IDEA          : IntelliJ IDEA 2021.3.1 (Community Edition)
+```yml
+JDK Version   : 17.0.1
+Server Tested : dev.amethystcraft.my.id (1.17.1)
+IDE           : IntelliJ IDEA 2021.3.1 (Community Edition)
 ```
 
 ### Commands & Features
-- Welcome message.
-- Interaction when place block.
-- feed & heal
+- Welcome message (configurable)
+- Interaction when place block
+- Feed & Heal
 - myspawn & setmyspawn
 
 ### Contributors
