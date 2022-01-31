@@ -17,6 +17,7 @@ public class Heal {
 
                 Player player = (Player) sender;
                 player.setHealth(20.0d);
+                MessageFormats.send(player, "You have been heal!");
 
                 return true;
             }
