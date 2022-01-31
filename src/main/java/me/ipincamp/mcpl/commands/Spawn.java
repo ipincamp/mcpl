@@ -38,7 +38,7 @@ public class Spawn {
 
         spawn = new Location(world, x, y, z, yaw, pitch);
 
-        new CommandHandlers("setmyspawn", true) {
+        new CommandHandlers("setspawn", true) {
             @Override
             public boolean onCommand(CommandSender sender, String [] arguments) {
                 Player player = (Player) sender;
@@ -62,11 +62,11 @@ public class Spawn {
 
             @Override
             public String getUsage() {
-                return "/setmyspawn";
+                return "/setspawn";
             }
-        }.enableDelay(5).setPermission("mcpl.command.setmyspawn");
+        }.enableDelay(5).setPermission("mcpl.command.setspawn");
 
-        new CommandHandlers("myspawn", true) {
+        new CommandHandlers("spawn", true) {
             @Override
             public boolean onCommand(CommandSender sender, String [] arguments) {
                 Player player = (Player) sender;
@@ -78,8 +78,8 @@ public class Spawn {
 
             @Override
             public String getUsage() {
-                return "/myspawn";
+                return "/spawn";
             }
-        }.enableDelay(3).setPermission("mcpl.command.myspawn");
+        }.enableDelay(3).setPermission("mcpl.command.spawn");
     }
 }
