@@ -8,10 +8,11 @@ IDE           : IntelliJ IDEA 2021.3.1 (Community Edition)
 ```
 
 ### Commands & Features
-- Welcome message (configurable)
-- Interaction when place block
-- Feed & Heal
-- myspawn & setmyspawn
+- Welcome message (configurable & support color code)
+- Interaction when place block (example place torch)
+- Feed & Heal (have cooldowns)
+- Ping (include other players)
+- Spawn & Setspawn (have cooldowns)
 
 ### Contributors
 Author: [@ipincamp](https://github.com/ipincamp) <br>
