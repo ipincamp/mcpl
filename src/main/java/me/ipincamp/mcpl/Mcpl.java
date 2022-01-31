@@ -22,6 +22,7 @@ public final class Mcpl extends JavaPlugin {
 
         new Heal();
         new Feed();
+        new List();
         new Ping();
         new Spawn(this);
 
