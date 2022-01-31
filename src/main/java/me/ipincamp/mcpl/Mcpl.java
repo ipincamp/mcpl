@@ -1,9 +1,6 @@
 package me.ipincamp.mcpl;
 
-import me.ipincamp.mcpl.commands.Feed;
-import me.ipincamp.mcpl.commands.Heal;
-import me.ipincamp.mcpl.commands.Ping;
-import me.ipincamp.mcpl.commands.Spawn;
+import me.ipincamp.mcpl.commands.*;
 import me.ipincamp.mcpl.events.JoinLeave;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
